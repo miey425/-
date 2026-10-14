@@ -112,6 +112,75 @@
       </section>
     </section>
 
+    <section class="card article" aria-labelledby="capacity-guide">
+  <h2 id="capacity-guide">
+    動画・ゲーム録画の容量目安
+  </h2>
+
+  <p>
+    録画時間ごとのファイルサイズの目安をまとめました。
+    映像ビットレートに音声192kbpsを加えて計算しています。
+  </p>
+
+  <div class="table-wrapper">
+    <table>
+      <caption>画質・録画時間別の予想ファイルサイズ</caption>
+
+      <thead>
+        <tr>
+          <th scope="col">画質</th>
+          <th scope="col">30分</th>
+          <th scope="col">1時間</th>
+          <th scope="col">3時間</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">720p / 30fps</th>
+          <td>1.17GB</td>
+          <td>2.34GB</td>
+          <td>7.01GB</td>
+        </tr>
+
+        <tr>
+          <th scope="row">1080p / 30fps</th>
+          <td>1.84GB</td>
+          <td>3.69GB</td>
+          <td>11.06GB</td>
+        </tr>
+
+        <tr>
+          <th scope="row">1080p / 60fps</th>
+          <td>2.74GB</td>
+          <td>5.49GB</td>
+          <td>16.46GB</td>
+        </tr>
+
+        <tr>
+          <th scope="row">1440p / 60fps</th>
+          <td>5.44GB</td>
+          <td>10.89GB</td>
+          <td>32.66GB</td>
+        </tr>
+
+        <tr>
+          <th scope="row">4K / 60fps</th>
+          <td>10.17GB</td>
+          <td>20.34GB</td>
+          <td>61.01GB</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="hint">
+    ※ビットレートは参考値です。
+    解像度やfpsだけで録画容量が決まるわけではありません。
+    OBSのCQPなどでは、映像内容によって容量が変動します。
+  </p>
+</section>
+
     <article class="card guide">
       <h2>計算の仕組み</h2>
       <p>ビットレートは「1秒に使うデータ量」です。録画容量は、映像と音声のビットレートの合計と録画時間から概算できます。</p>

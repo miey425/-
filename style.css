@@ -232,3 +232,43 @@ footer {
   background-color: #1d4ed8;
   color: white;
 }
+
+/* 録画容量の比較表 */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+caption {
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+thead {
+  background: #eff6ff;
+}
+
+th {
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
