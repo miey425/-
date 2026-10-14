@@ -272,3 +272,39 @@ th {
 tbody tr:hover {
   background: #f8fafc;
 }
+
+/* 比較表 */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+caption {
+  text-align: left;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+thead {
+  background: #eff6ff;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}

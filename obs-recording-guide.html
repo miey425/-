@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OBS録画の容量は1時間で何GB？設定と計算方法を解説 | Nexora Lab</title>
+
+  <meta
+    name="description"
+    content="OBSで1時間録画すると何GB必要？1080p・60fpsや4K録画の容量目安、CBR・VBR・CQPの違い、録画容量を減らす方法を解説します。"
+  >
+
+  <link
+    rel="canonical"
+    href="https://recording-calculator.nexora-lab.workers.dev/obs-recording-guide.html"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Cloudflare Web Analytics -->
+  <script
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"d327a57d81ee4e0887fe18182597323a"}'
+  ></script>
+</head>
+
+<body>
+  <main class="container">
+
+    <header>
+      <p><a href="/">← 録画容量計算機に戻る</a></p>
+
+      <h1>OBS録画の容量は1時間で何GB？</h1>
+
+      <p class="description">
+        OBS Studioの録画容量の目安や、
+        ビットレートの設定方法を初心者向けに解説します。
+      </p>
+    </header>
+
+    <article class="card article">
+
+      <h2>OBSで1時間録画すると何GB必要？</h2>
+
+      <p>
+        OBSで録画した動画のファイルサイズは、
+        主にビットレートと録画時間によって決まります。
+      </p>
+
+      <p>
+        例えば、映像ビットレートが20Mbps、
+        音声ビットレートが192kbpsの場合、
+        1時間の録画容量は約9.09GBになります。
+      </p>
+
+      <h2>録画容量の目安一覧</h2>
+
+      <p>
+        以下は音声192kbpsを加えた計算例です。
+        映像ビットレートは比較用の仮定値であり、
+        OBSの推奨設定を示すものではありません。
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <caption>録画時間とファイル容量の関係</caption>
+
+          <thead>
+            <tr>
+              <th scope="col">映像ビットレート</th>
+              <th scope="col">30分</th>
+              <th scope="col">1時間</th>
+              <th scope="col">3時間</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th scope="row">5Mbps</th>
+              <td>1.17GB</td>
+              <td>2.34GB</td>
+              <td>7.01GB</td>
+            </tr>
+
+            <tr>
+              <th scope="row">8Mbps</th>
+              <td>1.84GB</td>
+              <td>3.69GB</td>
+              <td>11.06GB</td>
+            </tr>
+
+            <tr>
+              <th scope="row">12Mbps</th>
+              <td>2.74GB</td>
+              <td>5.49GB</td>
+              <td>16.46GB</td>
+            </tr>
+
+            <tr>
+              <th scope="row">20Mbps</th>
+              <td>4.54GB</td>
+              <td>9.09GB</td>
+              <td>27.26GB</td>
+            </tr>
+
+            <tr>
+              <th scope="row">45Mbps</th>
+              <td>10.17GB</td>
+              <td>20.34GB</td>
+              <td>61.01GB</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="hint">
+        ※一定のビットレートを仮定した概算です。
+        ファイルの管理情報や可変ビットレートなどによって
+        実際の容量は異なります。
+      </p>
+
+      <h2>CBR・VBR・CQPの違い</h2>
+
+      <h3>CBR（固定ビットレート）</h3>
+
+      <p>
+        CBRは、一定のビットレートを目標として
+        映像をエンコードする方式です。
+      </p>
+
+      <p>
+        録画時間からファイル容量を見積もりやすいことが特徴です。
+        ただし、必ず完全に一定になるわけではありません。
+      </p>
+
+      <h3>VBR（可変ビットレート）</h3>
+
+      <p>
+        VBRは、映像の複雑さに応じてビットレートを変化させる方式です。
+      </p>
+
+      <p>
+        動きが激しい場面ではデータ量が増え、
+        静かな場面では減ることがあります。
+      </p>
+
+      <p>
+        容量を予測する際には平均ビットレートが重要です。
+      </p>
+
+      <h3>CQP（固定量子化パラメータ）</h3>
+
+      <p>
+        CQPは、量子化パラメータを基準に映像を圧縮する方式です。
+      </p>
+
+      <p>
+        一般的にCQPの数値を小さくすると、
+        高画質になる代わりにファイルサイズが大きくなる傾向があります。
+      </p>
+
+      <p>
+        ただし、映像の内容によってビットレートが変わるため、
+        録画前に容量を正確に計算するのは困難です。
+      </p>
+
+      <h2>OBSで録画容量を減らす方法</h2>
+
+      <h3>1. 録画設定を見直す</h3>
+
+      <p>
+        必要以上に高い画質設定を使っていないか確認しましょう。
+        CQPなどを使用している場合は、
+        品質設定を調整することで容量を減らせる場合があります。
+      </p>
+
+      <h3>2. 解像度を調整する</h3>
+
+      <p>
+        4K録画が必要ない場合は、
+        1080pなどに変更する方法があります。
+      </p>
+
+      <p>
+        ただし、解像度を下げた割合と
+        ファイル容量が減る割合は必ずしも一致しません。
+      </p>
+
+      <h3>3. FPSを調整する</h3>
+
+      <p>
+        60fpsが不要な動画では30fpsに変更することで、
+        エンコードする情報量を減らせる可能性があります。
+      </p>
+
+      <p>
+        一方、動きの激しいゲームを録画する場合は、
+        滑らかさとのバランスを考える必要があります。
+      </p>
+
+      <h3>4. 動画エンコーダーを確認する</h3>
+
+      <p>
+        H.264、HEVC（H.265）、AV1など、
+        使用するコーデックによって圧縮効率は異なります。
+      </p>
+
+      <p>
+        高効率なコーデックなら、同程度の画質を
+        より小さな容量で保存できる場合があります。
+      </p>
+
+      <p>
+        ただし、再生・編集ソフトとの互換性も確認しましょう。
+      </p>
+
+      <h2>実際の動画から容量を予測する方法</h2>
+
+      <p>
+        CQPなどで録画している場合は、
+        短いサンプル動画を録画して、
+        その容量から長時間録画時のサイズを推定する方法が便利です。
+      </p>
+
+      <p>
+        例えば、5分の録画で500MBになった場合、
+        同じ平均データ量で1時間録画すると約6GBになります。
+      </p>
+
+      <p>
+        当サイトの録画容量計算機では、
+        動画ファイルを選択して平均ビットレートを推定できます。
+      </p>
+
+      <p>
+        動画はブラウザ内で処理され、
+        サーバーにアップロードされません。
+      </p>
+
+      <p>
+        <a href="/">録画容量計算機で実際に計算する →</a>
+      </p>
+
+      <h2>よくある質問</h2>
+
+      <h3>Q. OBSの録画容量は解像度だけで決まりますか？</h3>
+
+      <p>
+        いいえ。解像度だけでなく、
+        ビットレート、録画時間、FPS、コーデック、
+        録画方式、映像内容などが関係します。
+      </p>
+
+      <h3>Q. CQPで録画した場合も計算できますか？</h3>
+
+      <p>
+        正確な事前計算は困難です。
+        短いサンプル動画を使って推定する方法がおすすめです。
+      </p>
+
+      <h3>Q. 1時間の録画に必要な容量は？</h3>
+
+      <p>
+        例えば映像20Mbps、音声192kbpsなら約9.09GBです。
+        実際の設定に合わせて計算してください。
+      </p>
+
+      <h2>参考資料</h2>
+
+      <p>
+        OBS公式ドキュメントも参考にしてください。
+      </p>
+
+      <ul>
+        <li>
+          <a
+            href="https://obsproject.com/kb/recording-encoder-presets-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OBS Recording Encoder Presets Guide
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://obsproject.com/kb/advanced-recording-guide-and-multi-track-audio"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OBS Advanced Recording Guide
+          </a>
+        </li>
+      </ul>
+
+    </article>
+
+    <footer>
+      <nav aria-label="フッターナビゲーション">
+        <a href="/">ホーム</a> |
+        <a href="/about.html">運営者情報</a> |
+        <a href="/contact.html">お問い合わせ</a> |
+        <a href="/privacy.html">プライバシーポリシー</a>
+      </nav>
+
+      <p>© 2026 Nexora Lab</p>
+    </footer>
+
+  </main>
+</body>
+</html>
