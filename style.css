@@ -212,3 +212,23 @@ footer {
     gap: 0;
   }
 }
+
+.contact-button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 14px 24px;
+
+  background-color: #2563eb;
+  color: white;
+
+  text-decoration: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.contact-button:hover {
+  background-color: #1d4ed8;
+  color: white;
+}
