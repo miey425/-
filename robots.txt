@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recording-calculator.nexora-lab.workers.dev/sitemap.xml
