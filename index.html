@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="動画・ゲーム録画の容量を無料で計算。画質から概算、手元の動画から平均ビットレートを推定、OBSの設定値から詳細計算できます。">
+  <title>動画・ゲーム録画の容量計算機</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <p class="eyebrow">無料・登録不要</p>
+      <h1>動画・ゲーム録画の容量計算機</h1>
+      <p>画質を選ぶだけで録画容量を概算。動画ファイルから調べることもできます。</p>
+    </header>
+
+    <section class="card" aria-label="容量計算ツール">
+      <div class="tabs" role="tablist" aria-label="計算方法">
+        <button type="button" class="tab active" role="tab" id="tab-easy" aria-controls="panel-easy" aria-selected="true" tabindex="0" data-tab="easy">かんたん計算</button>
+        <button type="button" class="tab" role="tab" id="tab-file" aria-controls="panel-file" aria-selected="false" tabindex="-1" data-tab="file">動画から調べる</button>
+        <button type="button" class="tab" role="tab" id="tab-detail" aria-controls="panel-detail" aria-selected="false" tabindex="-1" data-tab="detail">詳細設定</button>
+      </div>
+
+      <section id="panel-easy" class="panel" role="tabpanel" aria-labelledby="tab-easy">
+        <h2>かんたん計算</h2>
+        <p class="muted">解像度とフレームレートに基づく参考ビットレートで計算します。</p>
+        <label for="quality">録画画質</label>
+        <select id="quality">
+          <option value="5">720p / 30fps（映像5Mbps）</option>
+          <option value="8">1080p / 30fps（映像8Mbps）</option>
+          <option value="12" selected>1080p / 60fps（映像12Mbps）</option>
+          <option value="24">1440p / 60fps（映像24Mbps）</option>
+          <option value="45">4K / 60fps（映像45Mbps）</option>
+        </select>
+        <div class="two-col">
+          <div>
+            <label for="easyHours">録画時間（時間）</label>
+            <input id="easyHours" type="number" min="0" step="1" value="3">
+          </div>
+          <div>
+            <label for="easyMinutes">録画時間（分）</label>
+            <input id="easyMinutes" type="number" min="0" max="59" step="1" value="0">
+          </div>
+        </div>
+        <label for="easyStorage">ストレージ空き容量（GB）</label>
+        <input id="easyStorage" type="number" min="0" step="any" value="100">
+        <div class="result" aria-live="polite">
+          <p>予想ファイルサイズ</p>
+          <output id="easySize" class="big">—</output>
+          <p id="easyStatus" class="status"></p>
+        </div>
+        <p class="muted small">音声は192kbpsと仮定します。画質からビットレートは一意に決まらず、これは概算です。</p>
+      </section>
+
+      <section id="panel-file" class="panel" role="tabpanel" aria-labelledby="tab-file" hidden>
+        <h2>動画から調べる</h2>
+        <p class="muted">サンプル動画のファイルサイズと再生時間から、全体の平均ビットレートを推定します。</p>
+        <label for="videoFile">手元の動画を選択</label>
+        <input id="videoFile" type="file" accept="video/*,.mp4,.mov,.webm,.mkv">
+        <p class="muted small">動画はサーバーへ送信しません。ブラウザで再生時間を読めない形式には対応できません。</p>
+        <div class="two-col">
+          <div>
+            <label for="fileHours">予測する時間（時間）</label>
+            <input id="fileHours" type="number" min="0" step="1" value="3">
+          </div>
+          <div>
+            <label for="fileMinutes">予測する時間（分）</label>
+            <input id="fileMinutes" type="number" min="0" max="59" step="1" value="0">
+          </div>
+        </div>
+        <div id="fileResult" class="result" aria-live="polite">
+          <p>平均総ビットレート</p>
+          <output id="detectedBitrate" class="medium">—</output>
+          <p>指定時間の予想容量</p>
+          <output id="fileSize" class="big">—</output>
+          <p id="fileStatus" class="status">動画を選択してください。</p>
+        </div>
+        <p class="muted small">平均総ビットレートには音声やコンテナ情報なども含まれます。映像内容や録画設定が変わると予測が外れることがあります。</p>
+      </section>
+
+      <section id="panel-detail" class="panel" role="tabpanel" aria-labelledby="tab-detail" hidden>
+        <h2>詳細設定</h2>
+        <p class="muted">OBSなどで設定した映像・音声ビットレートを入力します。</p>
+        <label for="videoBitrate">映像ビットレート（Mbps）</label>
+        <input id="videoBitrate" type="number" min="0.01" step="any" value="20">
+        <label for="audioBitrate">音声ビットレート（kbps）</label>
+        <input id="audioBitrate" type="number" min="0" step="any" value="192">
+        <div class="two-col">
+          <div>
+            <label for="detailHours">録画時間（時間）</label>
+            <input id="detailHours" type="number" min="0" step="1" value="3">
+          </div>
+          <div>
+            <label for="detailMinutes">録画時間（分）</label>
+            <input id="detailMinutes" type="number" min="0" max="59" step="1" value="0">
+          </div>
+        </div>
+        <label for="detailStorage">ストレージ空き容量（GB）</label>
+        <input id="detailStorage" type="number" min="0" step="any" value="100">
+        <div class="result" aria-live="polite">
+          <p>予想ファイルサイズ</p>
+          <output id="detailSize" class="big">—</output>
+          <p id="detailStatus" class="status"></p>
+        </div>
+      </section>
+    </section>
+
+    <article class="card guide">
+      <h2>計算の仕組み</h2>
+      <p>ビットレートは「1秒に使うデータ量」です。録画容量は、映像と音声のビットレートの合計と録画時間から概算できます。</p>
+      <p class="formula">容量（GB）＝ ビットレート（Mbps）× 時間（秒）÷ 8 ÷ 1000</p>
+      <p>例えば映像20Mbps、音声192kbpsで3時間なら、約27.26GBです（1GB＝10億バイトで計算）。</p>
+      <h2>実際の容量が違う理由</h2>
+      <p>OBSのCQPなど品質基準の録画方式では、映像の動きや複雑さによってビットレートが変わります。「かんたん計算」は参考値、「詳細設定」は入力値に基づく概算、「動画から調べる」はサンプルの平均値による予測です。</p>
+      <h2>よくある質問</h2>
+      <h3>動画をアップロードしますか？</h3>
+      <p>いいえ。このツールは端末内のファイル情報をブラウザで読み取ります。動画を外部サーバーに送信しません。</p>
+      <h3>fpsが高いと必ず容量が増えますか？</h3>
+      <p>必ずしも増えません。実際のファイル容量は設定されたビットレートや圧縮方式などにも左右されます。</p>
+    </article>
+    <footer>動画・ゲーム録画の容量計算機</footer>
+  </main>
+</body>
+</html>
